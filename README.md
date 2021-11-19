@@ -1,34 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# :zap: PERN Full Stack Data
 
-## Getting Started
+* PostgreSQL Express Next.js (React) Node (PERN) full-stack app, integrates Node.js frontend with Node.js backend.
+* Displays space mission data
+* **Note:** to open web links in a new window use: _ctrl+click on link_
 
-First, run the development server:
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/pern-stack-data?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/pern-stack-data?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/pern-stack-data?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/pern-stack-data?style=plastic)
 
-```bash
-npm run dev
-# or
-yarn dev
+## :page_facing_up: Table of contents
+
+* [:zap: PERN Full Stack Data](#zap-pern-stack-data)
+  * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
+  * [:books: General Info](#books-general-info)
+  * [:camera: Screenshots](#camera-screenshots)
+  * [:signal_strength: Technologies](#signal_strength-technologies)
+  * [:floppy_disk: Setup](#floppy_disk-setup)
+  * [:computer: Code Examples](#computer-code-examples)
+  * [:clipboard: Status & To-Do List](#clipboard-status--to-do-list)
+  * [:clap: Inspiration](#clap-inspiration)
+  * [:file_folder: License](#file_folder-license)
+  * [:envelope: Contact](#envelope-contact)
+
+## :books: General info
+
+### Backend
+
+* PostgreSQL needs to be installed and running - I started it from my Windows 10 PostgreSQL 12 dropdown option 'SQL shell (psql)'
+* Postgresql shell commands: `\l` list all databases. `\c database1` connect to database1. `\dt` inspect tables. `\q` to quit.
+
+### Frontend
+
+* tba
+
+## :camera: Screenshots
+
+![Backend screenshot](./img/postgresql.png)
+![Frontend screenshot](./img/data.png)
+
+## :signal_strength: Technologies - Backend
+
+* [PostgreSQL v12](https://www.postgresql.org/)
+* [PostgreSQL Installer for Windows](https://www.postgresqltutorial.com/install-postgresql/)
+* [pg](https://www.npmjs.com/package/pg) PostgreSQL client for Node.js
+* [Express.js middleware v4](https://expressjs.com/)
+* [Node.js v12](https://nodejs.org/es/)
+* [Nodemon](https://www.npmjs.com/package/nodemon) npm module so backend server will automatically restart after code changes
+
+## :signal_strength: Technologies - Frontend
+
+* tba
+
+## :floppy_disk: Setup - Backend
+
+* Install [PostgreSQL](https://www.postgresql.org/) & run it (requires the password you created during installation)
+* Add postgresql database credentials to .env file
+
+## :floppy_disk: Setup - Frontend
+
+* tba
+
+## :floppy_disk: Setup - Full stack
+
+* tba
+
+## :computer: Code Examples - Backend
+
+* tba
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## :computer: Code Examples - Frontend
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+* tba
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## :cool: Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* tba
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## :clipboard: Status & To-Do List
 
-## Deploy on Vercel
+* Status: In work
+* To-Do: Complete
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## :clap: Inspiration/General Tools
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* [PostgreSQL Quick Command List](http://jcsites.juniata.edu/faculty/rhodes/dbms/pgsql.htm)
+
+## :file_folder: License
+
+* N/A
+
+## :envelope: Contact
+
+* Repo created by [ABateman](https://github.com/AndrewJBateman), email: gomezbateman@yahoo.com
