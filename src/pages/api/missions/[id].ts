@@ -2,6 +2,16 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.query)
-  res.json('xxxx')
+  const {method} = req
+
+  switch (method) {
+    case 'GET':
+      return res.json('getting a unique mission')
+    case 'PUT':
+      return res.json('updating...')
+    case 'DELETE':
+      return res.json('deleting...')
+    default:
+      return res.status(400).json('method is not allowed');
+  }
 }
