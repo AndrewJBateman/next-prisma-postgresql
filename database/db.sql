@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS data(
   created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO data(title, description) VALUES ('Task 1')
+INSERT INTO data(title, description) VALUES ('Task 1', 'Description 1')
