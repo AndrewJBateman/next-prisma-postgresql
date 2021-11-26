@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from 'next';
-import { conn } from '../../../utils/database';
+import { conn } from 'src/utils/database'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { method, body } = req;
@@ -10,11 +10,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			try {
 				const query = 'SELECT * FROM data';
 				const response = await conn.query(query);
-				console.log(response);
-
-				return res.status(200).json('getting tasks');
-			} catch (error) {
-				console.log(error);
+				return res.status(200).json(response.rows);
+			} catch (error: any) {
+				return res.status(400).json({
+					error: error.message,
+				});
 			}
 		}
 
@@ -29,7 +29,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				const response = await conn.query(query, values);
 
 				return res.status(200).json(response.rows[0]);
-			} catch (error) {}
+			} catch (error: any) {
+				return res.status(400).json({
+					error: error.message,
+				});
+			}
 		default:
 			return res.status(400).json('invalid method');
 	}
