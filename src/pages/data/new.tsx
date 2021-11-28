@@ -1,23 +1,22 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { Card, Form, Icon, Button } from 'semantic-ui-react';
+import { Card, Form, Confirm, Grid, Icon, Button } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 
 import { Data } from 'src/interfaces/Data';
 import { Layout } from 'src/components/Layout';
 
-const inititalState = {
-  title: "",
-  description: "",
+type ChangeInputHandler = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+
+const initialState = {
+	title: '',
+	description: '',
 };
 
 const NewPage = (): JSX.Element => {
-	const [data, setData] = useState<Data>(inititalState)
+	const [data, setData] = useState<Data>(initialState);
+	const [loading, setLoading] = useState(false);
+	const [openConfirm, setOpenConfirm] = useState(false);
 	const router = useRouter();
-
-	const handleChange = ({
-		target: { name, value },
-	}: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-		setData({ ...data, [name]: value });
 
 	const createData = async (data: Data) => {
 		await fetch('http://localhost:3000/api/data', {
@@ -27,12 +26,6 @@ const NewPage = (): JSX.Element => {
 			},
 			body: JSON.stringify(data),
 		});
-	};
-
-	const loadData = async (id: string) => {
-		const res = await fetch('http://localhost:3000/api/data/' + id);
-		const data = await res.json();
-		setData({ title: data.title, description: data.description });
 	};
 
 	const updateData = async (id: string, data: Data) => {
@@ -48,13 +41,38 @@ const NewPage = (): JSX.Element => {
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
+		setLoading(true);
 		try {
-			if (router.query.id) {
-				console.log('updating');
+			if (typeof router.query.id === 'string') {
+				updateData(router.query.id, data)
 			} else {
-				await createData(data);
-				router.push('/');
+				createData(data)
 			}
+      setData(initialState)
+      router.push('/');
+		} catch (error) {
+			console.log(error);
+		}
+		setLoading(false);
+	};
+
+	const handleChange = ({
+		target: { name, value },
+	}: ChangeInputHandler) =>
+		setData({ ...data, [name]: value });
+
+	const loadData = async (id: string) => {
+		const res = await fetch('http://localhost:3000/api/data/' + id);
+		const data = await res.json();
+		setData({ title: data.title, description: data.description });
+	};
+
+	const handleDelete = async (id: string) => {
+		try {
+			const res = await fetch('http://localhost:3000/api/data' + id, {
+				method: 'DELETE',
+			});
+			router.push('/');
 		} catch (error) {
 			console.log(error);
 		}
@@ -66,37 +84,71 @@ const NewPage = (): JSX.Element => {
 
 	return (
 		<Layout>
-			<Card>
-				<Card.Content>
-					<Form onSubmit={handleSubmit}>
-						<Form.Field>
-							<label htmlFor="title">Title:</label>
-							<input
-								type="text"
-								placeholder="Add data title"
-								name="title"
-								onChange={handleChange}
-								value={data.title}
-							/>
-						</Form.Field>
-						<Form.Field>
-							<label htmlFor="description">Description:</label>
-							<textarea
-								name="description"
-								id="description"
-								rows={2}
-								placeholder="Write a Description"
-								onChange={handleChange}
-								value={data.description}
-							></textarea>
-						</Form.Field>
-						<Button>
-							<Icon name="save" />
-							Save
+			<Grid
+				centered
+				columns="3"
+				verticalAlign="middle"
+				style={{ height: '70%' }}
+			>
+				<Grid.Column>
+					<Card>
+						<Card.Content>
+							<Form onSubmit={handleSubmit}>
+								<Form.Field>
+									<label htmlFor="title">Title</label>
+									<input
+										type="text"
+										placeholder="Add data title"
+										name="title"
+										onChange={handleChange}
+										value={data.title}
+                    autoFocus
+									/>
+								</Form.Field>
+								<Form.Field>
+									<label htmlFor="description">Description:</label>
+									<textarea
+										name="description"
+										id="description"
+										rows={2}
+										placeholder="Write a Description"
+										onChange={handleChange}
+										value={data.description}
+									></textarea>
+								</Form.Field>
+								{router.query.id ? (
+									<Button color="teal" loading={loading}>
+										<Icon name="save" />
+										Update
+									</Button>
+								) : (
+									<Button primary loading={loading}>
+										<Icon name="save" />
+										Save
+									</Button>
+								)}
+							</Form>
+						</Card.Content>
+					</Card>
+
+					{router.query.id && (
+						<Button inverted color="red" onClick={() => setOpenConfirm(true)}>
+							<Icon name="trash" />
+							Delete
 						</Button>
-					</Form>
-				</Card.Content>
-			</Card>
+					)}
+				</Grid.Column>
+			</Grid>
+
+			<Confirm
+				header="Delete data"
+				content={`Delete data ${router.query.id} - are you sure?`}
+				open={openConfirm}
+				onCancel={() => setOpenConfirm(false)}
+				onConfirm={() =>
+					typeof router.query.id === 'string' && handleDelete(router.query.id)
+				}
+			/>
 		</Layout>
 	);
 };

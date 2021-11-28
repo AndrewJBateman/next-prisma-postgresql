@@ -50,7 +50,9 @@
 
 ## :signal_strength: Technologies - Frontend
 
-* tba
+* [Next.js v12](https://nextjs.org/) React framework
+* [React v17](https://reactjs.org/) Javawscript library
+* [Semantic UI React v2](https://react.semantic-ui.com/)
 
 ## :floppy_disk: Setup - Backend
 
@@ -59,11 +61,9 @@
 
 ## :floppy_disk: Setup - Frontend
 
-* tba
-
-## :floppy_disk: Setup - Full stack
-
-* tba
+* `npm i` to install dependencies
+* `npm run dev` runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* `npm run build` Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
 
 ## :computer: Code Examples - Backend
 
@@ -83,12 +83,12 @@
 
 ## :cool: Features
 
-* tba
+* None as yet
 
 ## :clipboard: Status & To-Do List
 
-* Status: In work
-* To-Do: Complete
+* Status: Not working. Various erros, incl. `TypeError: Cannot destructure property 'inAmpMode' of '(0 , _react).useContext(...)' as it is null.`
+* To-Do: Fix errors
 
 ## :clap: Inspiration/General Tools
 

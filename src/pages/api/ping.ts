@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import {conn} from 'src/utils/database'
+import {conn} from '../../utils/database'
 
 type Data = {
   message: string;
@@ -7,8 +7,8 @@ type Data = {
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 	const response = await conn.query('SELECT NOW()');
 	console.log('response: ', response);
-	return res.json({ message: 'tested', time: response.rows[0].now });
+	return res.status(200).json({ message: 'tested', time: response.rows[0].now });
 };

@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next';
 import { Grid, Button } from 'semantic-ui-react';
 import { Data } from 'src/interfaces/Data';
 import { useRouter } from 'next/router';
+import { BiTaskX } from 'react-icons/bi';
 
 import { DataList } from 'src/components/data/DataList';
 import { Layout } from 'src/components/Layout';
@@ -22,8 +23,11 @@ const Home = ({ data }: Props) => {
 				>
 					<Grid.Row>
 						<Grid.Column>
-							<h2>No data</h2>
-							<Button onClick={() => push('/data/new')}>Add data</Button>
+							<div style={{ color: '#eee', textAlign: 'center' }}>
+								<BiTaskX size="15rem" />
+								<h2>No data</h2>
+								<Button onClick={() => push('/data/new')}>Add data</Button>
+							</div>
 						</Grid.Column>
 					</Grid.Row>
 				</Grid>
@@ -34,13 +38,13 @@ const Home = ({ data }: Props) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
 	const res = await fetch('http://localhost:3000/api/data');
 	const data = await res.json();
 
 	return {
 		props: {
-			data,
+			data
 		},
 	};
 };
