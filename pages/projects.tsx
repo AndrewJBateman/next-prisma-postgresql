@@ -21,8 +21,12 @@ const Projects = (props: Props) => {
             <p style={{ fontSize: 20, margin: 0, padding: 0 }}>
               {project.name}
             </p>
-            <p style={{ margin: 0, padding: 0 }}>{project.name}</p>
-                        
+            <p style={{ margin: 0, padding: 0 }}>
+              Country: {project.country}
+            </p>
+            <p style={{ margin: 0, padding: 0 }}>
+              Project ID: {project.id}
+            </p>
           </div>
         ))}
       </div>

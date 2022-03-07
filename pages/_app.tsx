@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>Project page</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AppBar position="static" color="transparent">
         <Toolbar>
           <Button color="inherit">
-            <Link href="/">Add a project</Link>
+            <Link href="/">Add project</Link>
           </Button>
 
           <Button color="inherit">

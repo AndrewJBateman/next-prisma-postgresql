@@ -30,14 +30,6 @@ export default function Home() {
       </Head>
       <div className="container">
         <h1>Project Details</h1>
-        {/* <TextField
-          fullWidth
-          label="Project ID"
-          variant="outlined"
-          value={projectId}
-          onChange={(e: any) => setProjectId(e.target.value)}
-          style={{ marginTop: 10 }}
-        /> */}
         <TextField
           fullWidth
           label="Project Name"
@@ -70,9 +62,7 @@ export default function Home() {
           color="primary"
           style={{ marginTop: 10 }}
           onClick={addProject}
-          disabled={
-            isLoading || name === "" || value === ""
-          }
+          disabled={isLoading || name === "" || value === ""}
         >
           {isLoading ? "Loading..." : "Submit"}
         </Button>
