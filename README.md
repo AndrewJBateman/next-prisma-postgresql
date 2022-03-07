@@ -1,17 +1,16 @@
-# :zap: PERN Full Stack Data
+# :zap: Next Prisma Postgresql
 
-* PostgreSQL Express Next.js (React) Node (PERN) full-stack app, integrates Node.js frontend with Node.js backend.
-* Displays space mission data
+* PostgreSQL database with Prisma & Next.js (React) to display project data
 * **Note:** to open web links in a new window use: _ctrl+click on link_
 
-![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/pern-stack-data?style=plastic)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/pern-stack-data?style=plastic)
-![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/pern-stack-data?style=plastic)
-![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/pern-stack-data?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/AndrewJBateman/next-prisma-postgresql?style=plastic)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/AndrewJBateman/next-prisma-postgresql?style=plastic)
+![GitHub Repo stars](https://img.shields.io/github/stars/AndrewJBateman/next-prisma-postgresql?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/AndrewJBateman/next-prisma-postgresql?style=plastic)
 
 ## :page_facing_up: Table of contents
 
-* [:zap: PERN Full Stack Data](#zap-pern-stack-data)
+* [:zap: Next Prisma Postgresql](#zap-next-prisma-postgresql)
   * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
   * [:books: General Info](#books-general-info)
   * [:camera: Screenshots](#camera-screenshots)
@@ -25,60 +24,45 @@
 
 ## :books: General info
 
-### Backend
-
-* PostgreSQL needs to be installed and running - I started it from my Windows 10 PostgreSQL 12 dropdown option 'SQL shell (psql)'
-* Postgresql shell commands: `\l` list all databases. `\c database1` connect to database1. `\dt` inspect tables. `\q` to quit.
-
-### Frontend
-
-* tba
+* Prisma uses a schema to define the app's data source (postgresql database), generator (client) and data model (Project). Written using Prisma Schema Language (PSL)
 
 ## :camera: Screenshots
 
-![Backend screenshot](./img/postgresql.png)
-![Frontend screenshot](./img/data.png)
+![screenshot](./img/db.png)
 
-## :signal_strength: Technologies - Backend
+## :signal_strength: Technologies
 
-* [PostgreSQL v12](https://www.postgresql.org/)
+* [PostgreSQL v14](https://www.postgresql.org/)
 * [PostgreSQL Installer for Windows](https://www.postgresqltutorial.com/install-postgresql/)
-* [pg](https://www.npmjs.com/package/pg) PostgreSQL client for Node.js
-* [Express.js middleware v4](https://expressjs.com/)
-* [Node.js v12](https://nodejs.org/es/)
-* [Nodemon](https://www.npmjs.com/package/nodemon) npm module so backend server will automatically restart after code changes
-
-## :signal_strength: Technologies - Frontend
-
+* [Prisma PostgreSQL toolkit](https://www.prisma.io/) Next-generation Node.js and TypeScript ORM
 * [Next.js v12](https://nextjs.org/) React framework
-* [React v17](https://reactjs.org/) Javawscript library
-* [Semantic UI React v2](https://react.semantic-ui.com/)
+* [React v17](https://reactjs.org/) Javascript library
 
-## :floppy_disk: Setup - Backend
+## :floppy_disk: Setup
 
-* Install [PostgreSQL](https://www.postgresql.org/) & run it (requires the password you created during installation)
-* Add postgresql database credentials to .env file
-
-## :floppy_disk: Setup - Frontend
+* Install [PostgreSQL](https://www.postgresql.org/) & run it (requires the password you created during installation). I started PostgreSQL from my Windows 10 PostgreSQL 14 dropdown option 'SQL shell (psql)'
+* Add postgresql database URL to a new `.env` file in the root - see `.env example`
 
 * `npm i` to install dependencies
+* `prisma migrate dev --name init` to create first Prisma migration and make Prisma schema in sync with database schema and start migration history
+* `prisma migrate dev` to sync Prisma schema
 * `npm run dev` runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * `npm run build` Builds the app for production to the `build` folder. It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
 
+* Postgresql shell commands: `\l` list all databases. `\c datadb` connect to database1. `\dt` inspect tables. `\q` to quit.
+
 ## :computer: Code Examples - Backend
 
-* tba
+* SQL to create a table
 
-```
-
-```
-
-## :computer: Code Examples - Frontend
-
-* tba
-
-```
-
+```sql
+CREATE TABLE projectschema.Project(
+   ID       INT              NOT NULL,
+   NAME     VARCHAR (20)     NOT NULL,
+   VALUE    INT              NOT NULL,
+   COUNTRY  CHAR (25),
+   PRIMARY KEY (ID)
+);
 ```
 
 ## :cool: Features
@@ -87,16 +71,17 @@
 
 ## :clipboard: Status & To-Do List
 
-* Status: Not working. Various erros, incl. `TypeError: Cannot destructure property 'inAmpMode' of '(0 , _react).useContext(...)' as it is null.`
-* To-Do: Fix errors
+* Status: Working
+* To-Do: Improve
 
 ## :clap: Inspiration/General Tools
 
 * [PostgreSQL Quick Command List](http://jcsites.juniata.edu/faculty/rhodes/dbms/pgsql.htm)
+* [SQLShack: Aveek Das: An overview of PGAdmin – PostgreSQL Management Tool](https://www.sqlshack.com/an-overview-of-pgadmin-postgresql-management-tool/)
 
 ## :file_folder: License
 
-* N/A
+* This project is licensed under the terms of the MIT license.
 
 ## :envelope: Contact
 
