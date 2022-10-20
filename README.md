@@ -12,13 +12,14 @@
 
 * [:zap: Next Prisma Postgresql](#zap-next-prisma-postgresql)
   * [:page_facing_up: Table of contents](#page_facing_up-table-of-contents)
-  * [:books: General Info](#books-general-info)
+  * [:books: General info](#books-general-info)
   * [:camera: Screenshots](#camera-screenshots)
   * [:signal_strength: Technologies](#signal_strength-technologies)
   * [:floppy_disk: Setup](#floppy_disk-setup)
-  * [:computer: Code Examples](#computer-code-examples)
+  * [:computer: Code Examples - Backend](#computer-code-examples---backend)
+  * [:cool: Features](#cool-features)
   * [:clipboard: Status & To-Do List](#clipboard-status--to-do-list)
-  * [:clap: Inspiration](#clap-inspiration)
+  * [:clap: Inspiration/General Tools](#clap-inspirationgeneral-tools)
   * [:file_folder: License](#file_folder-license)
   * [:envelope: Contact](#envelope-contact)
 
